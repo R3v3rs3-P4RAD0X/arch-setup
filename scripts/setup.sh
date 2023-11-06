@@ -23,6 +23,9 @@ package_list=(
     "unzip"
 )
 
+# Clear the screen
+clear
+
 # Check if the script is being run as root
 if [ "$EUID" -ne 0 ]; then
     # If the script is not being run as root, print an error

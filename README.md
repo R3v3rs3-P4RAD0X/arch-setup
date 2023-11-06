@@ -29,7 +29,8 @@ cd arch-setup
 To setup your Arch Linux distribution, run the following command:
 
 ```bash
-bash scripts/setup.sh
+cd scripts
+bash setup.sh
 ```
 
 ## Contributing

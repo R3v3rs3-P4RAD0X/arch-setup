@@ -40,7 +40,7 @@ dotfiles_install()
 
     # If verbose is true, print a message
     if [ "$2" = "true" ]; then
-        print "🚀 Installing dotfiles for $1..." "yellow"
+        print "🔃 Installing dotfiles for $1" "yellow"
     fi
 
     # Wget the dotfiles output to /tmp/DillonEllis.zip
@@ -55,11 +55,23 @@ dotfiles_install()
     # Delete the zip file
     rm $(pwd)/main.zip
 
-    # # Move the dotfiles to the user's home directory
-    mv -f $(pwd)/P4RAD0X-main "$user_home/P4RAD0X"
+    # Delete the P4RAD0X directory if it exists from the user's home directory
+    rm -rf $user_home/P4RAD0X
+
+    # Move the P4RAD0X to the user's home directory
+    mv -f $(pwd)/P4RAD0X-main $user_home/P4RAD0X
+
+    # Change directory to the user's home directory
+    cd $user_home
+
+    # Change the owner of the P4RAD0X directory to the user
+    chown -R $1:$1 $user_home/P4RAD0X
+
+    # Change directory to the P4RAD0X directory
+    cd $user_home/P4RAD0X
 
     # Run the dotfiles configurer script
-    bash $user_home/P4RAD0X/setup.sh
+    ./setup.sh
 
     # If verbose is true, print a message
     if [ "$2" = "true" ]; then
